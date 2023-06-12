@@ -21,7 +21,7 @@ class Submission(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Автор')
     problem = models.ForeignKey('problemset.problem', on_delete=models.CASCADE, verbose_name='Задача')
     submit_time = models.DateTimeField(auto_now_add=True, verbose_name='Время посылки')
-    status = models.CharField(max_length=19, choices=STATUS_CHOICES, verbose_name='Вердикт', null=True, blank=True)
+    status = models.CharField(max_length=19, choices=STATUS_CHOICES, verbose_name='Вердикт', null=True, blank=True, default=STATUS_CHOICES[0])
     memory_consumed = models.PositiveIntegerField(default=0, verbose_name='Память', null=True, blank=True)
     time_consumed = models.PositiveIntegerField(default=0, verbose_name='Время', null=True, blank=True)
     language = models.ForeignKey('submissions.language', on_delete=models.SET_DEFAULT, default='Unknown', verbose_name='Язык')
